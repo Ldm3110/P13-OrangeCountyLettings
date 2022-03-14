@@ -10,3 +10,5 @@ MIDDLEWARE += [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
+
+ALLOWED_HOSTS = ['orange-county-lettings.herokuapp.com']

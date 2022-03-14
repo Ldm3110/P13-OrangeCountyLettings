@@ -150,7 +150,7 @@ Une image Docker permettant l'exécution du code sans difficultés est disponibl
 dans votre terminal/invite de commandes :
 
 `
-$ docker run -p 8000:8000 -it ldm3110/orange_county_lettings:e46ffc36d28994bb2778c10e9274c1579546e76a
+$ docker run -p 8000:8000 -it ldm3110/orange_county_lettings:a1c7d6361aa1b6f89fb8e1c10fc5faa5af43e94d
 `
 
 L'application s'installera et s'exécutera alors automatiquement. Pour le fermer veuillez presser Ctrl + C.

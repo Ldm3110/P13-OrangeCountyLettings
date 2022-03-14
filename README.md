@@ -141,7 +141,7 @@ variables comme indiqué ci-dessous) :
   = `Rendez-vous dans les paramètres du projet puis aller jusqu'à la partie SDK Setup du menu puis cliquez sur Client Keys (DSN). Vous aurez alors accés au DSN du projet`
 
 Une fois ces réglages de fait vous n'avez rien d'autres à faire si ce n'est effectuer des push sur votre dépôt GitHub.
-En effet lors de chaque envoi de modifications circleCI exécutera les instructions dans l'ordre repris dans la partie
+En effet, lors de chaque envoi de modifications circleCI exécutera les instructions dans l'ordre repris dans la partie
 `Fonctionnement`. Si une erreur venait à être levée, elle vous sera alors indiquée.
 
 ### Utilisation de l'image Docker déjà existante
@@ -154,6 +154,8 @@ $ docker run -p 8000:8000 -it ldm3110/orange_county_lettings:e46ffc36d28994bb277
 `
 
 L'application s'installera et s'exécutera alors automatiquement. Pour le fermer veuillez presser Ctrl + C.
+
+Pour un explicatif des commandes Docker, merci de vous référer à la documentation officielle : https://docs.docker.com/
 
 ### Visualisation de l'application actuellement déployée sur Heroku
 

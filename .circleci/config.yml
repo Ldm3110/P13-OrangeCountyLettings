@@ -1,0 +1,25 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@2.0.1
+
+jobs:
+  test-linting:
+    docker:
+      - image: cimg/python:3.9.6
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Run linting
+          command: flake8
+
+workflows:
+  test-application:
+    jobs:
+      - test-linting
+      - python/test:
+          version: '3.9.6'
+          pkg-manager: pip
+          args: '-r requirements.txt'

@@ -10,7 +10,7 @@
         <ul>
             {% for profile in profiles_list %}
                 <li>
-                    <a href="{% url 'profile' username=profile.user.username %}">
+                    <a href="{% url 'profiles:detail' username=profile.user.username %}">
                         {{ profile.user.username }}
                     </a>
                 </li>

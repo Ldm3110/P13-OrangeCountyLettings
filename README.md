@@ -129,7 +129,7 @@ variables comme indiqué ci-dessous) :
 
 **3. La clé secrète pour le fonctionnement de l'application Django :**
 
-- SECRET_KEY = `vous pouvez obtenir une clé aléatoire en vous rendant sur le site` https://djecrety.ir/
+- SECRET_KEY = `vous pouvez obtenir une clé aléatoire en vous rendant sur le site` **https://djecrety.ir/**
 
 **4. Le fichier de settings spécifique au déploiement sur Heroku :**
 
@@ -155,12 +155,11 @@ $ docker run -p 8000:8000 -it ldm3110/orange_county_lettings:e46ffc36d28994bb277
 
 L'application s'installera et s'exécutera alors automatiquement. Pour le fermer veuillez presser Ctrl + C.
 
-Pour un explicatif des commandes Docker, merci de vous référer à la documentation officielle : https://docs.docker.com/
+Pour un explicatif des commandes Docker, merci de vous référer à la documentation officielle : **https://docs.docker.com/**
 
 ### Visualisation de l'application actuellement déployée sur Heroku
 
 Rendez-vous à l'adresse suivant :
 
-`
-https://orange-county-lettings.herokuapp.com/
-`
+**https://orange-county-lettings.herokuapp.com/**
+

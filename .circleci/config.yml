@@ -50,5 +50,5 @@ workflows:
             - python/test
           filters:
             branches:
-              only: master
+              only: main
       # DEPLOYMENT ON HEROKU

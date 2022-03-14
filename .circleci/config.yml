@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   python: circleci/python@2.0.1
   docker: circleci/docker@2.0.2
+  heroku: circleci/heroku@1.2.6
 
 jobs:
   # LINTING
@@ -33,6 +34,18 @@ jobs:
           image: ${DOCKER_LOGIN}/orange_county_lettings
           tag: $CIRCLE_SHA1
 
+  # HEROKU
+  deploy-to-heroku:
+    docker:
+      - image: cimg/python:3.9.6
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
+      - run:
+          command: HEROKU_API_KEY=${HEROKU_API_KEY} heroku config:set SECRET_KEY=$SECRET_KEY -a orange-county-lettings
+      - run:
+          command: HEROKU_API_KEY=${HEROKU_API_KEY} heroku config:set DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE -a orange-county-lettings
 
 workflows:
   test-application:
@@ -52,3 +65,9 @@ workflows:
             branches:
               only: main
       # DEPLOYMENT ON HEROKU
+      - deploy-to-heroku:
+          requires:
+            - build-and-push-to-docker
+          filters:
+            branches:
+              only: master

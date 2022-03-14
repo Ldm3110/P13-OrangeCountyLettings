@@ -2,8 +2,10 @@ version: 2.1
 
 orbs:
   python: circleci/python@2.0.1
+  docker: circleci/docker@2.0.2
 
 jobs:
+  # LINTING
   test-linting:
     docker:
       - image: cimg/python:3.9.6
@@ -15,11 +17,38 @@ jobs:
           name: Run linting
           command: flake8
 
+  # DOCKER
+  build-and-push-to-docker:
+    executor: docker/docker
+    steps:
+      - setup_remote_docker
+      - checkout
+      # Check that Docker username and password environment variables are set
+      # Then run docker login to ensure that you can push the built image
+      - docker/check
+      - docker/build:
+          image: ${DOCKER_LOGIN}/orange_county_lettings
+          tag: $CIRCLE_SHA1
+      - docker/push:
+          image: ${DOCKER_LOGIN}/orange_county_lettings
+          tag: $CIRCLE_SHA1
+
+
 workflows:
   test-application:
     jobs:
+      # TESTS BEFORE DEPLOYMENT
       - test-linting
       - python/test:
           version: '3.9.6'
           pkg-manager: pip
           args: '-r requirements.txt'
+      # DOCKER
+      - build-and-push-to-docker:
+          requires:
+            - test-linting
+            - python/test
+          filters:
+            branches:
+              only: master
+      # DEPLOYMENT ON HEROKU

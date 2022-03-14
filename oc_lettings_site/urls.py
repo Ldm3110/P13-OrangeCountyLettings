@@ -4,6 +4,7 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
+    path('sentry-debug/', views.trigger_error, name="test-sentry"),
     path('', views.index, name='index'),
     path('lettings/', include("lettings.urls")),
     path('profiles/', include('profiles.urls')),

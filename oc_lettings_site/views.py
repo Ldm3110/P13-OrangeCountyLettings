@@ -10,3 +10,7 @@ from django.shortcuts import render
 # iaculis enim cursus in. Praesent volutpat porttitor magna, non finibus neque cursus id.
 def index(request):
     return render(request, 'index.html')
+
+
+def trigger_error(request):
+    division_by_zero = 1 / 0

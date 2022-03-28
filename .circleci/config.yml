@@ -41,6 +41,7 @@ jobs:
     steps:
       - checkout
       - heroku/install
+      # deploy
       - run:
           command: HEROKU_API_KEY=${HEROKU_API_KEY} heroku apps:create orange-county-lettings --region eu
       - heroku/deploy-via-git

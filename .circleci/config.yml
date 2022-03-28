@@ -43,6 +43,8 @@ jobs:
       - heroku/install
       - heroku/deploy-via-git
       - run:
+          command: HEROKU_API_KEY=${HEROKU_API_KEY} heroku apps:create orange-county-lettings
+      - run:
           command: HEROKU_API_KEY=${HEROKU_API_KEY} heroku config:set SECRET_KEY=$SECRET_KEY -a orange-county-lettings
       - run:
           command: HEROKU_API_KEY=${HEROKU_API_KEY} heroku config:set DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE -a orange-county-lettings
